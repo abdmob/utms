@@ -172,6 +172,7 @@ object UniversalTuringMachine extends App {
 			UTMRule[S](tuple._1, tuple._2, tuple._3, tuple._4, tuple._5)
 	}
 
+	main()
 
 	def main(): Unit = {
 		import dsl._
