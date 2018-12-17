@@ -18,11 +18,11 @@ package utm.scala
 
 import scala.annotation.tailrec
 import scala.language.implicitConversions
-import scala.reflect.classTag
 
 /**
   * Implementation of Universal Turing Machine in Scala that can simulate an arbitrary
   * Turing machine on arbitrary input
+  *
   * @author Abdulla Abdurakhmanov (https://github.com/abdmob/utms)
   */
 class UniversalTuringMachine[S](val rules: List[UTMRule[S]],
@@ -30,7 +30,7 @@ class UniversalTuringMachine[S](val rules: List[UTMRule[S]],
                                 val finalStates: Set[S],
                                 val blankSymbol: String,
                                 val inputTapeVals: Seq[String],
-                                printEveryIter : Int = 1) {
+                                printEveryIter: Int = 1) {
 
 	private val initialTape = UTMTape(inputTapeVals, 0, blankSymbol)
 
@@ -38,7 +38,7 @@ class UniversalTuringMachine[S](val rules: List[UTMRule[S]],
 	private def iterate(state: S, curIteration: Int, tape: UTMTape): UTMTape = {
 		val needToBePrinted = curIteration % printEveryIter == 0
 
-		if(needToBePrinted) {
+		if (needToBePrinted) {
 			print(s"${curIteration}: ${state}: ")
 			tape.printTape()
 		}
@@ -81,7 +81,9 @@ class UniversalTuringMachine[S](val rules: List[UTMRule[S]],
 sealed trait UTMAction
 
 case class UTMLeft() extends UTMAction
+
 case class UTMRight() extends UTMAction
+
 case class UTMStay() extends UTMAction
 
 /**
@@ -96,7 +98,7 @@ case class UTMRule[S](state: S,
 /**
   * Universal Turing Machine Tape
   */
-case class UTMTape(content: Seq[String], position: Int, blankSymbol : String) {
+case class UTMTape(content: Seq[String], position: Int, blankSymbol: String) {
 
 	private def updateContentAtPos(symbol: String) = {
 		if (position >= content.length) {
@@ -120,14 +122,13 @@ case class UTMTape(content: Seq[String], position: Int, blankSymbol : String) {
 				}
 			)
 
-		if(updatedTape.position < 0) {
+		if (updatedTape.position < 0) {
 			updatedTape.copy(
 				content = blankSymbol +: updatedTape.content,
 				position = 0
 			)
 		}
-		else
-		if(updatedTape.position >= updatedTape.content.length) {
+		else if (updatedTape.position >= updatedTape.content.length) {
 			updatedTape.copy(
 				content = updatedTape.content :+ blankSymbol
 			)
@@ -171,7 +172,7 @@ object UniversalTuringMachine extends App {
 		final val stay = UTMStay()
 
 		implicit def tupleToUTMLRule[S](tuple: (S, String, String, UTMAction, S)): UTMRule[S] =
-			UTMRule[S](tuple._1,tuple._2,tuple._3,tuple._4,tuple._5)
+			UTMRule[S](tuple._1, tuple._2, tuple._3, tuple._4, tuple._5)
 	}
 
 
