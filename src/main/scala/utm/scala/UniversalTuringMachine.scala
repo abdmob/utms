@@ -79,7 +79,6 @@ class UniversalTuringMachine[S](val rules: List[UTMRule[S]],
   * Universal Turing Machine actions
   */
 sealed trait UTMAction
-
 case class UTMLeft() extends UTMAction
 case class UTMRight() extends UTMAction
 case class UTMStay() extends UTMAction
