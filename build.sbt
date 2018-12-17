@@ -21,10 +21,12 @@ autoScalaLibrary := false
 resolvers ++= Seq(
 	"Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/",
 	"Sonatype OSS Releases" at "http://oss.sonatype.org/content/repositories/releases/"
-) 
+)
 
 libraryDependencies ++= Seq(
-	"org.scala-lang" % "scala-library" % scalaVersion.value
+	"org.scala-lang" % "scala-library" % scalaVersion.value,
+	"org.scalactic" %% "scalactic" % "3.0.5" % "test",
+	"org.scalatest" %% "scalatest" % "3.0.5" % "test"
 )
 
 scalacOptions ++= Seq(
@@ -32,8 +34,6 @@ scalacOptions ++= Seq(
 	"-unchecked",
 	"-feature"
 )
-
-fork := true
 
 javacOptions ++= Seq("-Xlint:deprecation","-source", "1.8", "-target", "1.8", "-Xlint")
 
@@ -43,3 +43,5 @@ packageOptions := Seq(ManifestAttributes(
 ))
 
 retrieveManaged := true
+
+lazy val utmsProject = (project in file("."))
