@@ -22,8 +22,6 @@ import scala.language.implicitConversions
 /**
   * Implementation of Universal Turing Machine in Scala that can simulate an arbitrary
   * Turing machine on arbitrary input
-  *
-  * @author Abdulla Abdurakhmanov (https://github.com/abdmob/utms)
   */
 class UniversalTuringMachine[S](val rules: List[UTMRule[S]],
                                 val initialState: S,
