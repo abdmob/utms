@@ -104,8 +104,10 @@ case class UTMTape(content: Seq[String], position: Int, blankSymbol: String) {
 		else if (position < 0) {
 			symbol +: content
 		}
-		else
+		else if(content(position) != symbol)
 			content.updated(position, symbol)
+		else
+			content
 	}
 
 	private[scala] def updated(symbol: String, action: UTMAction): UTMTape = {
