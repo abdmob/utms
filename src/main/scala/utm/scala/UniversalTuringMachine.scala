@@ -233,9 +233,6 @@ object UniversalTuringMachine extends App {
 
     createIncrementMachine()
     createThreeStateBusyBeaver()
-
-    // careful here, 47 mln iterations,
-    // so this is commented to save our nature (I checked it for you anyway):
-    // createFiveState2SymBusyBeaverMachine()
+    createFiveState2SymBusyBeaverMachine()
   }
 }
