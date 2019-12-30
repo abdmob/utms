@@ -28,11 +28,11 @@ class UniversalTuringMachine[S](
     val initialState: S,
     val finalStates: Set[S],
     val blankSymbol: String,
-    val inputTapeVals: Seq[String],
+    val inputTapeVals: Iterable[String],
     printEveryIter: Int = 1
 ) {
 
-  private val initialTape = UTMTape( inputTapeVals, 0, blankSymbol )
+  private val initialTape = UTMTape( inputTapeVals.toVector, 0, blankSymbol )
 
   @tailrec
   private def iterate( state: S, curIteration: Int, tape: UTMTape ): UTMTape = {
@@ -95,7 +95,7 @@ object UTMRule {
 /**
  * Universal Turing Machine Tape
  */
-case class UTMTape( content: Seq[String], position: Int, blankSymbol: String ) {
+case class UTMTape( content: Vector[String], position: Int, blankSymbol: String ) {
 
   private def updateContentAtPos( symbol: String ) = {
     if (position >= content.length) {

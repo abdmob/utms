@@ -12,8 +12,6 @@ licenses := Seq( ( "Apache License v2.0", url( "http://www.apache.org/licenses/L
 
 scalaVersion := "2.13.1"
 
-crossScalaVersions := Seq( "2.13.1", "2.12.10" )
-
 sbtVersion := "1.3.5"
 
 autoScalaLibrary := false

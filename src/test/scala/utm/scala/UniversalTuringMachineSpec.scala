@@ -37,7 +37,7 @@ class UniversalTuringMachineSpec extends AnyFlatSpec {
       inputTapeVals = Seq( "1", "1", "1" )
     )
 
-    assert( machine.run().content === Seq( "1", "1", "1", "1" ) )
+    assert( machine.run().content === Vector( "1", "1", "1", "1" ) )
   }
 
   it should "have correct output tape for three-state busy beaver" in {
@@ -62,7 +62,7 @@ class UniversalTuringMachineSpec extends AnyFlatSpec {
       inputTapeVals = Seq()
     )
 
-    assert( machine.run().content === Seq( "1", "1", "1", "1", "1", "1" ) )
+    assert( machine.run().content === Vector( "1", "1", "1", "1", "1", "1" ) )
   }
 
   it should "have correct output tape for 5-state, 2-symbol probable Busy Beaver machine" in {
@@ -94,7 +94,7 @@ class UniversalTuringMachineSpec extends AnyFlatSpec {
       printEveryIter = 100000
     )
 
-    assert( machine.run().content === Seq( "1", "1", "1", "1", "1", "1" ) )
+    assert( machine.run().content.take( 10 ) === Vector( "1", "0", "1", "0", "0", "1", "0", "0", "1", "0" ) )
   }
 
 }
